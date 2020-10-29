@@ -1,0 +1,1 @@
+[{'price': '12345', 'name': 'test', 'description': 'Product Description 1', 'id': 'f2aa76f8-9620-43be-877c-b6f18fefc106'}, {'price': '12345', 'name': 'Product 2', 'description': 'Product Description 2', 'id': 'a8b05f15-c052-4868-82d6-a70b8f13a225'}]
