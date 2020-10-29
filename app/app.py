@@ -2,11 +2,7 @@ import falcon, json
 
 from db import Database
 
-database = Database([{
-        "id":"1",
-        "name": "Product 1",
-        "description": "Product 1 Description",
-        "price": 1234}])
+database = Database("db.txt")
 
 class ObjRequestClass:
     __json_input = {}
@@ -67,21 +63,8 @@ class ObjRequestClass:
             response = {"error": True, "message": "You must provice a valid id"}
             res.media = response
             return
-
-        user_id = self.__json_input["id"]
-
-        user_found = database.get(user_id)
-
-        if len(user_found) == 0:
-            response = {"error": True, "message": "Invalid id value"}
-            res.media = response
-            return
         
-        user, = user_found
-        for key in self.__json_input:
-            user[key] = self.__json_input[key]
-        
-        updated_user = database.update(user)
+        updated_user = database.update(self.__json_input)
 
         res.status=falcon.HTTP_200
         res.media = updated_user
